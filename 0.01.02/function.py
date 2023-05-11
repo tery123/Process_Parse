@@ -147,7 +147,7 @@ def function1_check_vf_after_pg():
 
 def function1_verfy_time_zone():
 
-	SiteNumber_str = input("What site do you want to check?\n") # 使用者輸入的東西都算是字串
+	SiteNumber_str = input("What site do you want to check?\n")
 
 	try:
 		SiteNumber = int(SiteNumber_str)
@@ -156,10 +156,20 @@ def function1_verfy_time_zone():
 		input("Please key enter to leave.")
 		quit()
 
-	Timing_Allow_str = input("How much time gap could be allowed? Please input second. ex: 5\n") # 使用者輸入的東西都算是字串
+	Timing_Allow_L_str = input("How much time do programmer verification at least(minimum)? Please input second. ex: 5\n") 
 
 	try:
-		Timing_Allow = int(Timing_Allow_str)
+		Timing_Allow_L = int(Timing_Allow_L_str)
+	except:
+		print("Plase enter second. ex: 5.")
+		input("Please key enter to leave.")
+		quit()
+
+
+	Timing_Allow_H_str = input("How much time do programmer verification maximum? Please input second. ex: 5\n") 
+
+	try:
+		Timing_Allow_H = int(Timing_Allow_H_str)
 	except:
 		print("Plase enter second. ex: 5.")
 		input("Please key enter to leave.")
@@ -221,8 +231,12 @@ def function1_verfy_time_zone():
 				Pass_time  = Pass_time + 86400
 
 			#Step2: Checking time zoe over seting
-			if (Pass_time - VF_Time) > Timing_Allow:
-				print("Process wrong. Verify time is too long. Spend %d second. Please check line %d." %( Pass_time - VF_Time , line_count))
+			if (Pass_time - VF_Time) > Timing_Allow_H:
+				print("Process wrong. Verify time is too long. Spent %d second. Please check line %d." %( Pass_time - VF_Time , line_count))
+				Site_err_flag = True
+
+			if (Pass_time - VF_Time) < Timing_Allow_L:
+				print("Process wrong. Verify time is too short. Spent %d second. Please check line %d." %( Pass_time - VF_Time , line_count))
 				Site_err_flag = True
 
 
@@ -244,5 +258,5 @@ def function1_verfy_time_zone():
 	if not Site_err_flag:
 		print("\nSite#%d is OK" %(SiteNumber))
 
-	#input("Please key enter to leave.")
+	input("Please key enter to leave.")
 
