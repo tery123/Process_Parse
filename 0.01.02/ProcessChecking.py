@@ -3,7 +3,7 @@
 # Initail data 5/10/2023 
 
 # Package to exe = pyinstaller -F ProcessChecking.py
-# pyinstaller.exe -F --version-file file_version_info.txt test.py
+# pyinstaller.exe -F --version-file file_version_info.txt ProcessChecking.py
 
 from __future__ import print_function
 import os

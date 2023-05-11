@@ -18,7 +18,14 @@ def ParseSite( line_in_log, site):
 	if ("Site#" + str(site) + " Verifying...") in line_in_log:
 		return "get_verify_message" , Check_time(line_in_log)
 
-	if ("Site#"+ str(site) + " [")in line_in_log:
+	#if ("Site#"+ str(site) + " [")in line_in_log:
+	#	if "Program Pass!" in line_in_log:
+	#		return "Program Pass!"	, Check_time(line_in_log)
+
+	#	if "Verify Pass!" in line_in_log:
+	#		return "Verify Pass!"	, Check_time(line_in_log)
+
+	if ("Site#"+ str(site)) in line_in_log:
 		if "Program Pass!" in line_in_log:
 			return "Program Pass!"	, Check_time(line_in_log)
 
