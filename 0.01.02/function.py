@@ -182,6 +182,12 @@ def function1_verfy_time_zone():
 		input("Please key enter to leave.")
 		quit()
 
+
+	if Timing_Allow_H < Timing_Allow_L:
+		print("Maximum(%d) second less minimum(%d) second. Please restart." %(Timing_Allow_H, Timing_Allow_L))
+		input("Please key enter to leave.")
+		quit()
+
 ######################################################################################
 ######################################################################################
 ######################################################################################
@@ -208,18 +214,18 @@ def function1_verfy_time_zone():
 	for x in line:
 		Parse_Message, Message_time = ParseSite(x, SiteNumber)
 
-		if Parse_Message == "get_ID_message":
+		if "get_ID_message" == Parse_Message:
 			Process_ID = True
 			ID_time = Message_time
 			ID_Count = ID_Count + 1
 
-		if Parse_Message == "get_verify_message":
+		if "get_verify_message" == Parse_Message:
 			Process_V = True
 			VF_Time = Message_time
 			VF_Count = VF_Count + 1
 
 		if Process_ID:
-			if Parse_Message == "Verify Pass!":
+			if "Verify Pass!" == Parse_Message:
 				Pass_time = Message_time
 				Process_Pass = True
 
