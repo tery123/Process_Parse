@@ -356,6 +356,7 @@ def function3_check_all_time_zone():
 		if "get_ID_message" == Parse_Message:
 			Process_ID = True
 			ID_Time = Message_time
+			Message_line_showed = line_count;
 			ID_Count = ID_Count + 1
 
 		if "get_prog_message" == Parse_Message:
@@ -390,11 +391,13 @@ def function3_check_all_time_zone():
 
 			#Step2: Checking time zoe over seting
 			if (Pass_time - ID_Time) > Timing_Allow_H:
-				print("Process time wrong. Process time is too long. Spent %d second. Please check line %d." %( Pass_time - ID_Time , line_count))
+				print("Process time wrong. Process time is too long. Spent %d second. " %( Pass_time - ID_Time))
+				print("Please check line %d ~ %d." %(Message_line_showed, line_count))
 				Site_err_flag = True
 
 			if (Pass_time - ID_Time) < Timing_Allow_L:
-				print("Process time wrong. Process time is too short. Spent %d second. Please check line %d." %( Pass_time - ID_Time , line_count))
+				print("Process time wrong. Process time is too short. Spent %d second. " %( Pass_time - ID_Time))
+				print("Please check line %d ~ %d." %(Message_line_showed, line_count))
 				Site_err_flag = True
 
 
